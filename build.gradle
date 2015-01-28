@@ -68,13 +68,16 @@ libraries {
     all {
         binaries.all {
             if (targetPlatform.operatingSystem.macOsX) {
+                cCompiler.args '-D', "SQLITE_ENABLE_FTS4"
                 cCompiler.args '-I', "${org.gradle.internal.jvm.Jvm.current().javaHome}/include"
                 cCompiler.args '-I', "${org.gradle.internal.jvm.Jvm.current().javaHome}/include/darwin"
                 linker.args '-framework', "JavaVM"
             } else if (targetPlatform.operatingSystem.linux) {
+                cCompiler.args '-D', "SQLITE_ENABLE_FTS4"
                 cCompiler.args '-I', "${org.gradle.internal.jvm.Jvm.current().javaHome}/include"
                 cCompiler.args '-I', "${org.gradle.internal.jvm.Jvm.current().javaHome}/include/linux"
             } else if (targetPlatform.operatingSystem.windows) {
+                cCompiler.args '-D', "SQLITE_ENABLE_FTS4"
                 cCompiler.args "-I${org.gradle.internal.jvm.Jvm.current().javaHome}/include"
                 cCompiler.args "-I${org.gradle.internal.jvm.Jvm.current().javaHome}/include/win32"
             }
